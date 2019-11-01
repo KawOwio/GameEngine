@@ -6,16 +6,16 @@ using namespace engine;
 int main()
 {
 	//Initialise out engine
-	//std::shared_ptr<Core> core = Core::initialize();
+	std::shared_ptr<Core> core = Core::initialize();
 
 	//Create a single in-game object
-	//shared<Entity> entity = core->addEntity();
+	std::shared_ptr<Entity> entity = core->addEntity();
 
 	//Add a simple component to it
-	//weak<TestScreen> testScreen entity->addComponent<TestScreen>();
+	//std::weak_ptr<Sandbox> testScreen = entity->addComponent<Sandbox>();
 
 	//Start the engine's main loop
-	//core->start();
+	core->start();
 
   return 0;
 }

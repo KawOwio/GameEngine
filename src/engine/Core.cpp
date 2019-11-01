@@ -4,12 +4,15 @@ namespace engine
 {
 	std::shared_ptr<Core> Core::initialize()
 	{
-		//smth
+		std::shared_ptr<Core> rtn = std::make_shared<Core>();
+		return rtn;
 	}
 
 	std::shared_ptr<Entity> Core::addEntity()
 	{
-		//smth
+		std::shared_ptr<Entity> newEntity = std::make_shared<Entity>();
+		entities.push_back(newEntity);
+		return newEntity;
 	}
 
 	void Core::start()
