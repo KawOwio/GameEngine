@@ -16,11 +16,12 @@ namespace engine
 	private:
 		std::vector<std::shared_ptr<Component>> components;
 		std::weak_ptr<Core> core;
+		std::weak_ptr<Entity> self;
 
+	public:
 		void tick();
 		void display();
 
-	public:
 		std::shared_ptr<Core> getCore();
 
 		template<typename T>

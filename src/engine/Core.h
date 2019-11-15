@@ -19,16 +19,17 @@ namespace engine
 	{
 	private:
 		std::shared_ptr<Environment> environemnt;
-		std::vector<std::shared_ptr<Entity>> entities;
 		std::shared_ptr<Keyboard> keyboard;
+		std::vector<std::shared_ptr<Entity>> entities;
+		std::weak_ptr<Core> self;
 
 		bool running;
 
 	public:
-		std::shared_ptr<Core> initialize();
+		static std::shared_ptr<Core> initialize();
 		std::shared_ptr<Entity> addEntity();
 
-		void start();
+		void run();
 		void stop();
 	};
 }

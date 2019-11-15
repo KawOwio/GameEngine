@@ -1,5 +1,6 @@
 #include "Component.h"
 #include "Core.h"
+#include "Entity.h"
 
 namespace engine
 {
@@ -33,13 +34,13 @@ namespace engine
 		return getEntity()->getCore();
 	}
 
-	std::shared_ptr<Keyboard> Component::getKeyboard()
-	{
+	//std::shared_ptr<Keyboard> Component::getKeyboard()
+	//{
 
-	}
+	//}
 
-	std::shared_ptr<Environemnt> Component::getEnvironemnt()
-	{
+	//std::shared_ptr<Environemnt> Component::getEnvironemnt()
+	//{
 
-	}
+	//}
 }

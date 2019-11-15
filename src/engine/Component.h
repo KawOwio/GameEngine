@@ -27,6 +27,8 @@ namespace engine
 		virtual void onBegin();
 		virtual void onTick();
 		virtual void onDisplay();
+		//virtual void onPostDisplay();
+		//virtual void onGui();
 	};
 }
 
