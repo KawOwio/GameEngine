@@ -14,7 +14,7 @@ namespace engine
 	{
 		std::shared_ptr<Entity> rtn = std::make_shared<Entity>();
 		entities.push_back(rtn);
-		rtn->entity = self;
+		rtn->self = rtn;
 		return rtn;
 	}
 

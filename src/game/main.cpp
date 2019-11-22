@@ -9,9 +9,9 @@ int main()
 	std::shared_ptr<Core> core = Core::initialize();
 
 	//Create a single in-game object
-	//std::shared_ptr<Entity> entity = core->addEntity();
+	std::shared_ptr<Entity> entity = core->addEntity();
 
-	//std::shared_ptr<Component> component = entity->addComponent<Component>();
+	std::shared_ptr<Component> component = entity->addComponent<Component>();
 
 	//Start the engine's main loop
 	core->run();

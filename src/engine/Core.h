@@ -5,6 +5,7 @@
 
 #include <memory>
 #include <vector>
+#include <SDL2/SDL.h>
 
 #define shared std::shared_ptr
 #define weak std::weak_ptr
@@ -24,6 +25,8 @@ namespace engine
 		std::weak_ptr<Core> self;
 
 		bool running;
+
+		SDL_Window* window;
 
 	public:
 		static std::shared_ptr<Core> initialize();
