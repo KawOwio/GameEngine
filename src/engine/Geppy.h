@@ -6,5 +6,7 @@
 #include "Core.h"
 #include "Entity.h"
 #include "Component.h"
+#include "Renderer.h"
+
 
 #endif // !_GEPPY_GEPPY_H_
