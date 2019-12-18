@@ -1,79 +1,63 @@
 #include "Renderer.h"
 #include "Entity.h"
 #include "Core.h"
+#include "Mesh.h"
+#include "Material.h"
+#include "Transform.h"
+#include "Camera.h"
 
 #include <iostream>
 
-using namespace rend;
-
-const GLchar *vertexAndFragSrc = 
-"\n#ifdef VERTEX\n" \
-"attribute vec3 in_Position;" \
-"attribute vec4 in_Color;" \
-"" \
-"uniform mat4 in_Model;" \
-"" \
-"varying vec4 ex_Color;" \
-"" \
-"void main()" \
-"{" \
-"  gl_Position = in_Model vec4(in_Position, 1.0);" \
-"  ex_Color = in_Color;" \
-"}" \
-""
-"\n#endif\n" \
-"\n#ifdef FRAGMENT\n" \
-"varying vec4 ex_Color;" \
-"void main()" \
-"{" \
-"  gl_FragColor = ex_Color;" \
-"}" \
-"\n#endif\n" \
-"";
+//const GLchar *vertexAndFragSrc = 
+//"\n#ifdef VERTEX\n" \
+//"attribute vec3 in_Position;" \
+//"attribute vec4 in_Color;" \
+//"" \
+//"uniform mat4 in_Model;" \
+//"" \
+//"varying vec4 ex_Color;" \
+//"" \
+//"void main()" \
+//"{" \
+//"  gl_Position = in_Model vec4(in_Position, 1.0);" \
+//"  ex_Color = in_Color;" \
+//"}" \
+//""
+//"\n#endif\n" \
+//"\n#ifdef FRAGMENT\n" \
+//"varying vec4 ex_Color;" \
+//"void main()" \
+//"{" \
+//"  gl_FragColor = ex_Color;" \
+//"}" \
+//"\n#endif\n" \
+//"";
 
 namespace engine
 {
 	void Renderer::onDisplay()
 	{
-		//getEntity()->getCore()->addEntity();
-		bool quit = false;
+		material->myShader->setMesh(mesh->myMesh);
 
-		while (!quit)
-		{
-			SDL_Event event = { 0 };
+		material->myShader->setUniform("u_Projection", getCore()->getCamera()->getProjection());
+		material->myShader->setUniform("u_Model", getEntity()->getComponent<Transform>()->getModel());
+		material->myShader->setUniform("u_View", getCore()->getCamera()->getView());
 
-			while (SDL_PollEvent(&event))
-			{
-				if (event.type == SDL_QUIT)
-				{
-					quit = true;
-				}
-			}
-
-			//glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-			//glClear(GL_COLOR_BUFFER_BIT);
-
-			//SDL_GL_SwapWindow(window);
-		}
-		shader->render();
+		material->myShader->render();
 	}
 
 	void Renderer::onInit()
 	{
-		context = Context::initialize();
-		shader = context->createShader();
-		shader->parse(vertexAndFragSrc);
+		window = getCore()->getWindow();
+		context = getCore()->getContext();
+	}
 
-		buffer = context->createBuffer();
-		buffer->add(vec3(0.0f, 0.5f, 0.0f));
-		buffer->add(vec3(-0.5f, -0.5f, 0.0f));
-		buffer->add(vec3(0.5f, -0.5f, 0.0f));
-		shader->setAttribute("in_Position", buffer);
-
-		buffer = context->createBuffer();
-		buffer->add(vec4(1.0f, 0.0f, 0.0f, 1.0f));
-		buffer->add(vec4(1.0f, 1.0f, 0.0f, 1.0f));
-		buffer->add(vec4(1.0f, 0.0f, 1.0f, 1.0f));
-		shader->setAttribute("in_Color", buffer);
+	void Renderer::setMaterial(std::shared_ptr<Material> _material)
+	{
+		material = _material;
+	}
+	void Renderer::setMesh(std::shared_ptr<Mesh> _mesh)
+	{
+		mesh = _mesh;
 	}
 }

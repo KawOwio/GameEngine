@@ -1,6 +1,7 @@
 #include "Component.h"
 #include "Core.h"
 #include "Entity.h"
+#include "Transform.h"
 
 namespace engine
 {
@@ -32,6 +33,11 @@ namespace engine
 	std::shared_ptr<Core> Component::getCore()
 	{
 		return getEntity()->getCore();
+	}
+
+	std::shared_ptr<Transform> Component::getTransform()
+	{
+		return getEntity()->getComponent<Transform>();
 	}
 
 	//std::shared_ptr<Keyboard> Component::getKeyboard()

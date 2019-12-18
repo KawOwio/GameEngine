@@ -4,6 +4,7 @@
 #define _COMPONENT_H_
 
 #include <memory>
+#include "Core.h"
 
 namespace engine
 {
@@ -11,24 +12,25 @@ namespace engine
 	class Core;
 	class Keyboard;
 	class Environemnt;
+	class Transform;
 
 	class Component
 	{
 	private:
+		friend class Entity;
 		std::weak_ptr<Entity> entity;
 
 	public:
-		std::shared_ptr<Entity> getEntity();
-		std::shared_ptr<Core> getCore();
-		std::shared_ptr<Keyboard> getKeyboard();
-		std::shared_ptr<Environemnt> getEnvironemnt();
-
 		virtual void onInit();
 		virtual void onBegin();
 		virtual void onTick();
 		virtual void onDisplay();
-		//virtual void onPostDisplay();
-		//virtual void onGui();
+
+		std::shared_ptr<Entity> getEntity();
+		std::shared_ptr<Core> getCore();
+		std::shared_ptr<Transform> getTransform();
+		//std::shared_ptr<Keyboard> getKeyboard();
+		//std::shared_ptr<Environemnt> getEnvironemnt();
 	};
 }
 

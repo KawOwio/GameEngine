@@ -7,6 +7,11 @@
 #include "Entity.h"
 #include "Component.h"
 #include "Renderer.h"
-
+#include "Transform.h"
+#include "Resources.h"
+#include "Resource.h"
+#include "Material.h"
+#include "Mesh.h"
+#include "Camera.h"
 
 #endif // !_GEPPY_GEPPY_H_

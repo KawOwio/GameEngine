@@ -3,15 +3,15 @@
 #ifndef _RENDERER_H_
 #define _RENDERER_H_
 
-
 #include <SDL2/SDL.h>
+#include <rend/rend.h>
 
 #include "Component.h"
-#include "rend/rend.h"
 
 namespace engine
 {
 	class Mesh;
+	class Material;
 
 	class Renderer : public Component
 	{
@@ -20,19 +20,15 @@ namespace engine
 		void onInit();
 		void onDisplay();
 
+		void setMaterial(std::shared_ptr<Material> _material);
+		void setMesh(std::shared_ptr<Mesh> _mesh);
+
 	private:
-		//SDL_Window *window;
+		SDL_Window *window;
 
-		//GLuint programId;
-		//GLuint vboId;
-		//GLuint vaoId;
-
-		std::shared_ptr<rend::Buffer> buffer;
 		std::shared_ptr<rend::Context> context;
-		std::shared_ptr<rend::Shader> shader;
-
-		std::weak_ptr<Mesh> mesh;
-		//std::shared_ptr<Material> material;
+		std::shared_ptr<Material> material;
+		std::shared_ptr<Mesh> mesh;
 	};
 }
 

@@ -1,6 +1,8 @@
 #include "Core.h"
 #include "Entity.h"
-#include "Renderer.h"
+#include "Resources.h"
+#include "Transform.h"
+
 #include <GL/glew.h>
 
 namespace engine
@@ -15,7 +17,8 @@ namespace engine
 			throw std::exception();
 		}
 
-		rtn->window = SDL_CreateWindow("Lab 4 - Architecture",
+		//Create window
+		rtn->window = SDL_CreateWindow("Happy Little Accidents",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 
@@ -28,7 +31,11 @@ namespace engine
 		{
 			throw std::exception();
 		}
-		
+
+		rtn->context = rend::Context::initialize();
+		rtn->resources = std::make_shared<Resources>();
+		rtn->resources->core = rtn;
+
 		return rtn;
 	}
 
@@ -36,27 +43,28 @@ namespace engine
 	{
 		std::shared_ptr<Entity> rtn = std::make_shared<Entity>();
 		entities.push_back(rtn);
+		rtn->core = self;
 		rtn->self = rtn;
+
+		rtn->addComponent<Transform>();
+
 		return rtn;
 	}
 
 	void Core::run()
 	{
+		running = true;
 		while (running)
 		{
-			for (auto it = entities.begin(); it != entities.end(); it++)
-			{
-				(*it)->tick();
-			}
-
 			glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			for (auto it = entities.begin(); it != entities.end(); it++)
 			{
+				(*it)->tick();
 				(*it)->display();
 			}
-			
+
 			SDL_GL_SwapWindow(window);
 		}
 	}
@@ -64,5 +72,25 @@ namespace engine
 	void Core::stop()
 	{
 		//smth
+	}
+
+	SDL_Window* Core::getWindow()
+	{
+		return window;
+	}
+
+	std::shared_ptr<rend::Context> Core::getContext()
+	{
+		return context;
+	}
+
+	std::shared_ptr<Resources> Core::getResources()
+	{
+		return resources;
+	}
+
+	std::shared_ptr<Camera> Core::getCamera()
+	{
+		return camera.lock();
 	}
 }

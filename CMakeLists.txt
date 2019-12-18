@@ -21,16 +21,30 @@ else()
 endif()
 
 add_library(engine
-	src/engine/Core.cpp
-	src/engine/Core.h
+	src/engine/Camera.cpp
+	src/engine/Camera.h
 	src/engine/Component.cpp
 	src/engine/Component.h
+	src/engine/Core.cpp
+	src/engine/Core.h
 	src/engine/Entity.cpp
 	src/engine/Entity.h
 	src/engine/Environment.cpp
 	src/engine/Environment.h
+	src/engine/Geppy.h
 	src/engine/Keyboard.cpp
 	src/engine/Keyboard.h
+	src/engine/Material.cpp
+	src/engine/Material.h
+	src/engine/Mesh.cpp
+	src/engine/Mesh.h
+	src/engine/Renderer.cpp
+	src/engine/Renderer.h
+	src/engine/Resource.h
+	src/engine/Resources.cpp
+	src/engine/Resources.h
+	src/engine/Transform.cpp
+	src/engine/Transform.h
 )
 
 target_link_libraries(engine SDL2 rend)
