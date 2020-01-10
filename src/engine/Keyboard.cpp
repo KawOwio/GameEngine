@@ -38,6 +38,55 @@ namespace engine
 		keyCodes.push_back(_keyCode);
 		return true;
 	}
+
+	rend::vec2 Keyboard::rotateCamera()
+	{
+		rend::vec2 deltaMousePos = oldMousePos - newMousePos;
+
+		pitch += deltaMousePos.x;
+		yaw += deltaMousePos.y;
+
+		float angle = 45.0f;
+
+		if (pitch > angle)
+		{
+			pitch = angle;
+		}
+		else if (pitch < -angle)
+		{
+			pitch = -angle;
+		}
+
+		oldMousePos = newMousePos;
+		return deltaMousePos * 0.01f;
+	}
+
+	bool Keyboard::isMouse()
+	{
+		if (newMousePos != oldMousePos)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	void Keyboard::motion(rend::vec2 _motion)
+	{
+		newMousePos = _motion;
+	}
+
+	float Keyboard::getYaw()
+	{
+		return yaw;
+	}
+
+	float Keyboard::getPitch()
+	{
+		return pitch;
+	}
 }
 
 //TODO: 

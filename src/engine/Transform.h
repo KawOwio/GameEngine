@@ -21,7 +21,7 @@ namespace engine
 		void onInit();
 		void onTick();
 
-		void translate(rend::vec3 _amount);
+		void translate(rend::vec4 _amount);
 		void rotate(rend::vec3 _amount);
 		void scaleFunction(rend::vec3 _amount);
 
@@ -30,6 +30,8 @@ namespace engine
 		void setScale(rend::vec3 _scale);
 
 		rend::mat4 getModel();
+
+		rend::vec3 getTranslate();
 	};
 }
 

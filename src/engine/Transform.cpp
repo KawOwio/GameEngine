@@ -11,12 +11,15 @@ namespace engine
 
 	void Transform::onTick()
 	{
-		translate(rend::vec3(0.0f, 1.0f, 0.0f));
+		//translate(rend::vec3(0.0f, 1.0f, 0.0f));
 	}
 
-	void Transform::translate(rend::vec3 _amount)
+	void Transform::translate(rend::vec4 _amount)
 	{
-		position += _amount;
+		rend::mat4 model = getModel();
+		rend::vec3 moveAmount = model * _amount;
+		position += moveAmount;
+		//position += _amount;
 	}
 
 	void Transform::rotate(rend::vec3 _amount)
@@ -44,7 +47,7 @@ namespace engine
 		scale = _scale;
 	}
 
-	glm::mat4 Transform::getModel()
+	rend::mat4 Transform::getModel()
 	{
 		rend::mat4 rtn = rend::mat4(1.0f);
 
@@ -56,5 +59,10 @@ namespace engine
 		rtn = glm::scale(rtn, scale);
 
 		return rtn;
+	}
+
+	rend::vec3 Transform::getTranslate()
+	{
+		return position;
 	}
 }

@@ -25,6 +25,8 @@ namespace engine
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 
+		SDL_CaptureMouse(SDL_TRUE);
+
 		if (!SDL_GL_CreateContext(rtn->window))
 		{
 			throw std::exception();
@@ -75,6 +77,18 @@ namespace engine
 				if (event.type == SDL_KEYUP)
 				{
 					keyboard->keyUp(event.key.keysym.sym);
+				}
+				if (event.type == SDL_MOUSEBUTTONDOWN)
+				{
+					keyboard->keyDown(event.button.button);
+				}
+				if (event.type == SDL_MOUSEBUTTONUP)
+				{
+					keyboard->keyUp(event.button.button);
+				}
+				if (event.type == SDL_MOUSEMOTION)
+				{
+					keyboard->motion(rend::vec2((float)event.motion.x, (float)event.motion.y));
 				}
 			}
 
