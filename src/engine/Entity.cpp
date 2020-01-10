@@ -3,6 +3,11 @@
 
 namespace engine
 {
+	std::shared_ptr<Core> Entity::getCore()
+	{
+		return core.lock();
+	}
+
 	void Entity::tick()
 	{
 		for (auto it = components.begin(); it != components.end(); it++)
@@ -17,10 +22,5 @@ namespace engine
 		{
 			(*it)->onDisplay();
 		}
-	}
-
-	std::shared_ptr<Core> Entity::getCore()
-	{
-		return core.lock();
 	}
 }

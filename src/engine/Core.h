@@ -19,6 +19,7 @@ namespace engine
 	class Renderer;
 	class Resources;
 	class Camera;
+	class Keyboard;
 
 	class Core
 	{
@@ -29,9 +30,10 @@ namespace engine
 		std::shared_ptr<rend::Context> context;
 		std::shared_ptr<Renderer> renderer;
 		std::shared_ptr<Keyboard> keyboard;
+		std::shared_ptr<Camera> camera;
+
 		std::vector<std::shared_ptr<Entity>> entities;
 
-		std::weak_ptr<Camera> camera;
 		std::weak_ptr<Core> self;
 
 		bool running;
@@ -44,12 +46,15 @@ namespace engine
 
 		void run();
 		void stop();
+		void SetCam(std::shared_ptr<Camera> _cam);
 
 		SDL_Window* getWindow();
 
 		std::shared_ptr<rend::Context> getContext();
 		std::shared_ptr<Resources> getResources();
 		std::shared_ptr<Camera> getCamera();
+		std::shared_ptr<Keyboard> getKeyboard();
+		std::shared_ptr<Environment> getEnvironment();
 	};
 }
 #endif

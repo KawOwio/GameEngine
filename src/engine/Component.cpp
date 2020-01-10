@@ -2,6 +2,8 @@
 #include "Core.h"
 #include "Entity.h"
 #include "Transform.h"
+#include "Keyboard.h"
+#include "Environment.h"
 
 namespace engine
 {
@@ -40,13 +42,13 @@ namespace engine
 		return getEntity()->getComponent<Transform>();
 	}
 
-	//std::shared_ptr<Keyboard> Component::getKeyboard()
-	//{
+	std::shared_ptr<Keyboard> Component::getKeyboard()
+	{
+		return getCore()->getKeyboard();
+	}
 
-	//}
-
-	//std::shared_ptr<Environemnt> Component::getEnvironemnt()
-	//{
-
-	//}
+	std::shared_ptr<Environment> Component::getEnvironment()
+	{
+		return getCore()->getEnvironment();
+	}
 }

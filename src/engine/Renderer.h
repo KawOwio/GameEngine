@@ -23,6 +23,9 @@ namespace engine
 		void setMaterial(std::shared_ptr<Material> _material);
 		void setMesh(std::shared_ptr<Mesh> _mesh);
 
+		std::shared_ptr<Material> GetMaterial();
+		std::shared_ptr<Mesh> GetMesh();
+
 	private:
 		SDL_Window *window;
 

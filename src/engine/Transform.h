@@ -18,6 +18,9 @@ namespace engine
 		rend::vec3 scale = rend::vec3(1.0f, 1.0f, 1.0f);
 		
 	public:
+		void onInit();
+		void onTick();
+
 		void translate(rend::vec3 _amount);
 		void rotate(rend::vec3 _amount);
 		void scaleFunction(rend::vec3 _amount);
@@ -26,7 +29,7 @@ namespace engine
 		void setRotation(rend::vec3 _rotation);
 		void setScale(rend::vec3 _scale);
 
-		glm::mat4 getModel();
+		rend::mat4 getModel();
 	};
 }
 

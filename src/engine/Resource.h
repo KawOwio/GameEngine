@@ -7,7 +7,7 @@
 
 namespace engine
 {
-
+	class Resources;
 	class Core;
 
 	class Resource

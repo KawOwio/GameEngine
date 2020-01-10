@@ -13,8 +13,8 @@ namespace engine
 	{
 	public:
 		void onInit();
-		glm::mat4 getView();
-		glm::mat4 getProjection();
+		rend::mat4 getView();
+		rend::mat4 getProjection();
 	};
 }
 

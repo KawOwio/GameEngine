@@ -8,31 +8,6 @@
 
 #include <iostream>
 
-//const GLchar *vertexAndFragSrc = 
-//"\n#ifdef VERTEX\n" \
-//"attribute vec3 in_Position;" \
-//"attribute vec4 in_Color;" \
-//"" \
-//"uniform mat4 in_Model;" \
-//"" \
-//"varying vec4 ex_Color;" \
-//"" \
-//"void main()" \
-//"{" \
-//"  gl_Position = in_Model vec4(in_Position, 1.0);" \
-//"  ex_Color = in_Color;" \
-//"}" \
-//""
-//"\n#endif\n" \
-//"\n#ifdef FRAGMENT\n" \
-//"varying vec4 ex_Color;" \
-//"void main()" \
-//"{" \
-//"  gl_FragColor = ex_Color;" \
-//"}" \
-//"\n#endif\n" \
-//"";
-
 namespace engine
 {
 	void Renderer::onDisplay()
@@ -59,5 +34,15 @@ namespace engine
 	void Renderer::setMesh(std::shared_ptr<Mesh> _mesh)
 	{
 		mesh = _mesh;
+	}
+
+	std::shared_ptr<Mesh> Renderer::GetMesh()
+	{
+		return mesh;
+	}
+
+	std::shared_ptr<Material> Renderer::GetMaterial()
+	{
+		return material;
 	}
 }

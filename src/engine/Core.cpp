@@ -2,8 +2,11 @@
 #include "Entity.h"
 #include "Resources.h"
 #include "Transform.h"
+#include "Keyboard.h"
+#include "Environment.h"
 
 #include <GL/glew.h>
+#include <iostream>
 
 namespace engine
 {
@@ -26,7 +29,7 @@ namespace engine
 		{
 			throw std::exception();
 		}
-
+		
 		if (glewInit() != GLEW_OK)
 		{
 			throw std::exception();
@@ -35,6 +38,8 @@ namespace engine
 		rtn->context = rend::Context::initialize();
 		rtn->resources = std::make_shared<Resources>();
 		rtn->resources->core = rtn;
+		rtn->keyboard = std::make_shared<Keyboard>();
+		rtn->environemnt = std::make_shared<Environment>();
 
 		return rtn;
 	}
@@ -56,13 +61,41 @@ namespace engine
 		running = true;
 		while (running)
 		{
-			glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+			SDL_Event event;
+			while (SDL_PollEvent(&event))
+			{
+				if (event.type == SDL_QUIT)
+				{
+					running = false;
+				}
+				if (event.type == SDL_KEYDOWN)
+				{
+					keyboard->keyDown(event.key.keysym.sym);
+				}
+				if (event.type == SDL_KEYUP)
+				{
+					keyboard->keyUp(event.key.keysym.sym);
+				}
+			}
+
+
+			glClearColor(0.85f, 0.15f, 0.85f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			for (auto it = entities.begin(); it != entities.end(); it++)
 			{
 				(*it)->tick();
 				(*it)->display();
+			}
+
+			//clear the pressedKeys and releasedKeys
+
+			//sleep off the remaining time 
+			float idealTime = 1.0f / 60.0f;
+			float deltaTime = environemnt->getDeltaTime();
+			if (idealTime > deltaTime)
+			{
+				SDL_Delay((idealTime - deltaTime) * 1000.0f);
 			}
 
 			SDL_GL_SwapWindow(window);
@@ -72,6 +105,11 @@ namespace engine
 	void Core::stop()
 	{
 		//smth
+	}
+
+	void Core::SetCam(std::shared_ptr<Camera> _cam)
+	{
+		camera = _cam;
 	}
 
 	SDL_Window* Core::getWindow()
@@ -91,6 +129,16 @@ namespace engine
 
 	std::shared_ptr<Camera> Core::getCamera()
 	{
-		return camera.lock();
+		return camera;
+	}
+
+	std::shared_ptr<Keyboard> Core::getKeyboard()
+	{
+		return keyboard;
+	}
+
+	std::shared_ptr<Environment> Core::getEnvironment()
+	{
+		return environemnt;
 	}
 }

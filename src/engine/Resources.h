@@ -29,11 +29,6 @@ namespace engine
 			rtn->load(_path);
 			return rtn;
 		}
-		//template <typename T>
-		//std::shared_ptr<T> create()
-		//{
-		//	//TODO
-		//}
 	};
 }
 

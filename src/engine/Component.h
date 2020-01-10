@@ -11,8 +11,9 @@ namespace engine
 	class Entity;
 	class Core;
 	class Keyboard;
-	class Environemnt;
+	class Environment;
 	class Transform;
+	class Keyboard;
 
 	class Component
 	{
@@ -29,8 +30,8 @@ namespace engine
 		std::shared_ptr<Entity> getEntity();
 		std::shared_ptr<Core> getCore();
 		std::shared_ptr<Transform> getTransform();
-		//std::shared_ptr<Keyboard> getKeyboard();
-		//std::shared_ptr<Environemnt> getEnvironemnt();
+		std::shared_ptr<Keyboard> getKeyboard();
+		std::shared_ptr<Environment> getEnvironment();
 	};
 }
 

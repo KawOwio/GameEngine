@@ -13,9 +13,10 @@ namespace engine
 		std::vector<int> keyCodes;
 
 	public:
-		bool getKey(int _keyCode);
-		bool getKeyUp(int _keyCode);
-		bool getKeyDown(int _keyCode);
+		bool isKey(int _keyCode);
+
+		void keyUp(int _keyCode);
+		bool keyDown(int _keyCode);
 	};
 }
 

@@ -2,16 +2,44 @@
 
 namespace engine
 {
-	bool Keyboard::getKey(int _keyCode)
+	bool Keyboard::isKey(int _keyCode)
 	{
-		return 1;
+		for (auto it = keyCodes.begin(); it != keyCodes.end(); it++)
+		{
+			if (*it == _keyCode)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
-	bool Keyboard::getKeyUp(int _keyCode)
+
+	void Keyboard::keyUp(int _keyCode)
 	{
-		return 1;
+		for (auto it = keyCodes.begin(); it != keyCodes.end(); it++)
+		{
+			if (*it == _keyCode)
+			{
+				keyCodes.erase(it);
+				return;
+			}
+		}
 	}
-	bool Keyboard::getKeyDown(int _keyCode)
+
+	bool Keyboard::keyDown(int _keyCode)
 	{
-		return 1;
+		for (auto it = keyCodes.begin(); it != keyCodes.end(); it++)
+		{
+			if (*it == _keyCode)
+			{
+				return false;
+			}
+		}
+		keyCodes.push_back(_keyCode);
+		return true;
 	}
 }
+
+//TODO: 
+//add mouse support
+//add gamepad support (https://davidgow.net/handmadepenguin/ch6.html)

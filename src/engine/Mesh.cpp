@@ -17,16 +17,16 @@ namespace engine
 			throw rend::Exception("Failed to open a model!");
 		}
 
-		std::string object;
+		std::string mesh;
 		std::string line;
 
 		while (!f.eof())
 		{
 			std::getline(f, line);
-			object += line + "\n";
+			mesh += line + "\n";
 		}
 
 		myMesh = core.lock()->getContext()->createMesh();
-		myMesh->parse(object);
+		myMesh->parse(mesh);
 	}
 }

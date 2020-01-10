@@ -2,6 +2,18 @@
 
 namespace engine
 {
+	void Transform::onInit()
+	{
+		position = rend::vec3(0.0f, 0.0f, 0.0f);
+		rotation = rend::vec3(0.0f, 0.0f, 0.0f);
+		scale = rend::vec3(1.0f, 1.0f, 1.0f);
+	}
+
+	void Transform::onTick()
+	{
+		translate(rend::vec3(0.0f, 1.0f, 0.0f));
+	}
+
 	void Transform::translate(rend::vec3 _amount)
 	{
 		position += _amount;
@@ -34,12 +46,12 @@ namespace engine
 
 	glm::mat4 Transform::getModel()
 	{
-		glm::mat4 rtn = rend::mat4(1.0f);
+		rend::mat4 rtn = rend::mat4(1.0f);
 
-		rtn = glm::translate(rtn, position);
-		rtn = glm::rotate(rtn, rotation.x, rend::vec3(1.0f, 0.0f, 0.0f));
-		rtn = glm::rotate(rtn, rotation.y, rend::vec3(0.0f, 1.0f, 0.0f));
-		rtn = glm::rotate(rtn, rotation.z, rend::vec3(0.0f, 0.0f, 1.0f));
+		rtn = rend::translate(rtn, position);
+		rtn = rend::rotate(rtn, rotation.x, rend::vec3(1.0f, 0.0f, 0.0f));
+		rtn = rend::rotate(rtn, rotation.y, rend::vec3(0.0f, 1.0f, 0.0f));
+		rtn = rend::rotate(rtn, rotation.z, rend::vec3(0.0f, 0.0f, 1.0f));
 
 		rtn = glm::scale(rtn, scale);
 
