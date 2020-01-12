@@ -12,6 +12,7 @@ namespace engine
 {
 	class Mesh;
 	class Material;
+	class Texture;
 
 	class Renderer : public Component
 	{
@@ -22,9 +23,11 @@ namespace engine
 
 		void setMaterial(std::shared_ptr<Material> _material);
 		void setMesh(std::shared_ptr<Mesh> _mesh);
+		void setTexture(std::shared_ptr<Texture> _texture);
 
-		std::shared_ptr<Material> GetMaterial();
-		std::shared_ptr<Mesh> GetMesh();
+		std::shared_ptr<Material> getMaterial();
+		std::shared_ptr<Mesh> getMesh();
+		std::shared_ptr<Texture> getTexture();
 
 	private:
 		SDL_Window *window;
@@ -32,6 +35,7 @@ namespace engine
 		std::shared_ptr<rend::Context> context;
 		std::shared_ptr<Material> material;
 		std::shared_ptr<Mesh> mesh;
+		std::shared_ptr<Texture> texture;
 	};
 }
 

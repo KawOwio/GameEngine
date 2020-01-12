@@ -15,7 +15,7 @@ namespace engine
 		std::shared_ptr<Core> rtn = std::make_shared<Core>();
 		rtn->self = rtn;
 
-		if (SDL_Init(SDL_INIT_VIDEO) < 0)
+		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER) < 0)
 		{
 			throw std::exception();
 		}
@@ -23,7 +23,7 @@ namespace engine
 		//Create window
 		rtn->window = SDL_CreateWindow("Happy Little Accidents",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-			WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+			WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_INPUT_GRABBED | SDL_WINDOW_OPENGL);
 
 		SDL_CaptureMouse(SDL_TRUE);
 
@@ -91,8 +91,7 @@ namespace engine
 					keyboard->motion(rend::vec2((float)event.motion.x, (float)event.motion.y));
 				}
 			}
-
-
+			SDL_WarpMouseInWindow(NULL, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 			glClearColor(0.85f, 0.15f, 0.85f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -119,9 +118,10 @@ namespace engine
 	void Core::stop()
 	{
 		//smth
+		SDL_DestroyWindow(window);
 	}
 
-	void Core::SetCam(std::shared_ptr<Camera> _cam)
+	void Core::setCam(std::shared_ptr<Camera> _cam)
 	{
 		camera = _cam;
 	}

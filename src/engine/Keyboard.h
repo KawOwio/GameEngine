@@ -5,6 +5,7 @@
 
 #include <vector>
 #include "rend/rend.h"
+#include "Core.h"
 
 namespace engine
 {
@@ -13,7 +14,7 @@ namespace engine
 	private:
 		std::vector<int> keyCodes;
 
-		rend::vec2 oldMousePos = rend::vec2(0.0f, 0.0f);
+		rend::vec2 oldMousePos = rend::vec2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 		rend::vec2 newMousePos;
 		float pitch = 40.0f;
 		float yaw;

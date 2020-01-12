@@ -14,5 +14,7 @@
 #include "Mesh.h"
 #include "Camera.h"
 #include "Keyboard.h"
+#include "Texture.h"
+#include "BoxCollider.h"
 
 #endif // !_GEPPY_GEPPY_H_

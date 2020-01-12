@@ -46,7 +46,7 @@ namespace engine
 		pitch += deltaMousePos.x;
 		yaw += deltaMousePos.y;
 
-		float angle = 45.0f;
+		float angle = 90.0f;
 
 		if (pitch > angle)
 		{
@@ -57,7 +57,6 @@ namespace engine
 			pitch = -angle;
 		}
 
-		oldMousePos = newMousePos;
 		return deltaMousePos * 0.01f;
 	}
 
@@ -88,7 +87,3 @@ namespace engine
 		return pitch;
 	}
 }
-
-//TODO: 
-//add mouse support
-//add gamepad support (https://davidgow.net/handmadepenguin/ch6.html)

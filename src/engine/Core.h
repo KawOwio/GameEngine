@@ -46,7 +46,7 @@ namespace engine
 
 		void run();
 		void stop();
-		void SetCam(std::shared_ptr<Camera> _cam);
+		void setCam(std::shared_ptr<Camera> _cam);
 
 		SDL_Window* getWindow();
 
@@ -55,6 +55,21 @@ namespace engine
 		std::shared_ptr<Camera> getCamera();
 		std::shared_ptr<Keyboard> getKeyboard();
 		std::shared_ptr<Environment> getEnvironment();
+
+		template<typename T>
+		std::vector<std::shared_ptr<T>> getEntities(std::vector<std::shared_ptr<T>> _rtn)
+		{
+			for (auto it = entities.begin(); it != entities.end(); it++)
+			{
+				std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>(*it);
+				if ((*it)->getComponent<BoxCollider>())
+				{
+					_rtn.push_back((*it));
+				}
+			}
+
+			return _rtn;
+		}
 	};
 }
 #endif

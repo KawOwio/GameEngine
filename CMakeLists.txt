@@ -45,6 +45,12 @@ add_library(engine
 	src/engine/Resources.h
 	src/engine/Transform.cpp
 	src/engine/Transform.h
+	src/engine/Texture.cpp
+	src/engine/Texture.h
+	src/engine/BoxCollider.cpp
+	src/engine/BoxCollider.h
+	src/engine/StaticModelCollider.cpp
+	src/engine/StaticModelCollider.h
 )
 
 target_link_libraries(engine SDL2 rend)

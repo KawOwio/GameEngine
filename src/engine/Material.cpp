@@ -7,8 +7,6 @@ namespace engine
 {
 	void Material::load(std::string _path)
 	{
-		_path += ".txt";
-
 		std::ifstream f(_path);
 
 		if (!f.is_open())

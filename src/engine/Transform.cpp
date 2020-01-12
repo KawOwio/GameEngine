@@ -11,7 +11,7 @@ namespace engine
 
 	void Transform::onTick()
 	{
-		//translate(rend::vec3(0.0f, 1.0f, 0.0f));
+		
 	}
 
 	void Transform::translate(rend::vec4 _amount)
@@ -61,7 +61,7 @@ namespace engine
 		return rtn;
 	}
 
-	rend::vec3 Transform::getTranslate()
+	rend::vec3 Transform::getPosition()
 	{
 		return position;
 	}

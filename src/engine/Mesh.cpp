@@ -8,8 +8,6 @@ namespace engine
 {
 	void Mesh::load(std::string _path)
 	{
-		_path += ".obj";
-
 		std::ifstream f(_path);
 
 		if (!f.is_open())
