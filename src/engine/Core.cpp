@@ -155,4 +155,9 @@ namespace engine
 	{
 		return environemnt;
 	}
+
+	std::vector<std::shared_ptr<Entity>> Core::getEntities()
+	{
+		return entities;
+	}
 }

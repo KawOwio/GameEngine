@@ -32,11 +32,25 @@ namespace engine
 			for (auto it = components.begin(); it != components.end(); it++)
 			{
 				std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>(*it);
-				if (*it)
+				if (*it && rtn != NULL)
 				{
 					return rtn;
 				}
 			}
+		}
+
+		template<typename T>
+		bool checkComponent()
+		{
+			for (auto it = components.begin(); it != components.end(); it++)
+			{
+				std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>(*it);
+				if (*it == rtn)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		template<typename T>

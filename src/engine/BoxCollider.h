@@ -21,6 +21,8 @@ namespace engine
 		rend::vec3 offset;
 		rend::vec3 lastPosition;
 
+
+
 		void onTick();
 		void collideBox();
 		void collideStaticMesh();

@@ -32,7 +32,19 @@ namespace engine
 		//Box collider entity system
 		std::vector<std::shared_ptr<Entity>> bces;
 
-		bces = getCore()->getEntities(bces);
+		//bces = getCore()->getEntities<BoxCollider>(bces);
+
+		std::vector<std::shared_ptr<Entity>> tempEntities = getCore()->getEntities();
+
+		for (auto it = tempEntities.begin(); it != tempEntities.end(); it++)
+		{
+			if ((*it)->checkComponent<BoxCollider>() == true)
+			{
+				bces.push_back(*it);
+				//std::shared_ptr<BoxCollider> bc = (*it)->getComponent<BoxCollider>();
+				//bc->getEntity()->getComponent<BoxCollider>();
+			}
+		}
 
 		rend::vec3 np = getTransform()->getPosition() + offset;
 
