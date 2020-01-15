@@ -13,6 +13,7 @@ namespace engine
 	public:
 		void onInit();
 
+		void setTrigger(bool _trigger);
 		void setSize(rend::vec3 _size);
 		void setOffset(rend::vec3 _size);
 
@@ -21,7 +22,7 @@ namespace engine
 		rend::vec3 offset;
 		rend::vec3 lastPosition;
 
-
+		bool isTrigger;
 
 		void onTick();
 		void collideBox();

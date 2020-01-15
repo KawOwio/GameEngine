@@ -16,5 +16,6 @@
 #include "Keyboard.h"
 #include "Texture.h"
 #include "BoxCollider.h"
+#include "Gui.h"
 
 #endif // !_GEPPY_GEPPY_H_

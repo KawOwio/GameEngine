@@ -19,6 +19,7 @@ namespace engine
 	class Renderer;
 	class Resources;
 	class Camera;
+	class GUI;
 
 	class Core
 	{
@@ -30,6 +31,7 @@ namespace engine
 		std::shared_ptr<Renderer> renderer;
 		std::shared_ptr<Keyboard> keyboard;
 		std::shared_ptr<Camera> camera;
+		std::shared_ptr<GUI> gui;
 
 		std::vector<std::shared_ptr<Entity>> entities;
 
@@ -55,6 +57,7 @@ namespace engine
 		std::shared_ptr<Keyboard> getKeyboard();
 		std::shared_ptr<Environment> getEnvironment();
 		std::vector<std::shared_ptr<Entity>> getEntities();
+		std::shared_ptr<GUI> getGui();
 	};
 }
 #endif

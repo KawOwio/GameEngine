@@ -26,6 +26,7 @@ namespace engine
 		virtual void onBegin();
 		virtual void onTick();
 		virtual void onDisplay();
+		virtual void onGui();
 
 		std::shared_ptr<Entity> getEntity();
 		std::shared_ptr<Core> getCore();

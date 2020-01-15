@@ -32,6 +32,7 @@ namespace engine
 		rend::mat4 getModel();
 
 		rend::vec3 getPosition();
+		rend::vec3 getRotation();
 	};
 }
 

@@ -19,7 +19,6 @@ namespace engine
 			mesh->myMesh->setTexture("u_Texture", texture->myTexture);
 		}
 		
-
 		material->myShader->setUniform("u_Projection", getCore()->getCamera()->getProjection());
 		material->myShader->setUniform("u_Model", getEntity()->getComponent<Transform>()->getModel());
 		material->myShader->setUniform("u_View", getCore()->getCamera()->getView());

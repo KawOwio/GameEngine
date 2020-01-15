@@ -51,6 +51,10 @@ add_library(engine
 	src/engine/BoxCollider.h
 	src/engine/StaticModelCollider.cpp
 	src/engine/StaticModelCollider.h
+	src/engine/Gui.h
+	src/engine/Gui.cpp
+	src/engine/Player.h
+	src/engine/Player.cpp
 )
 
 target_link_libraries(engine SDL2 rend)

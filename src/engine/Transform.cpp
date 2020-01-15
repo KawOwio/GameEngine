@@ -65,4 +65,9 @@ namespace engine
 	{
 		return position;
 	}
+
+	rend::vec3 Transform::getRotation()
+	{
+		return rotation;
+	}
 }

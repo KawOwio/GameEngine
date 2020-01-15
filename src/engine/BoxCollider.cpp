@@ -8,6 +8,7 @@ namespace engine
 	void BoxCollider::onInit()
 	{
 		size = rend::vec3(1.0f, 1.0f, 1.0f);
+		isTrigger = false;
 		lastPosition = getTransform()->getPosition();
 	}
 
@@ -15,6 +16,11 @@ namespace engine
 	{
 		collideBox();
 		collideStaticMesh();
+	}
+
+	void BoxCollider::setTrigger(bool _trigger)
+	{
+		isTrigger = _trigger;
 	}
 
 	void BoxCollider::setSize(rend::vec3 _size)
@@ -31,8 +37,6 @@ namespace engine
 	{
 		//Box collider entity system
 		std::vector<std::shared_ptr<Entity>> bces;
-
-		//bces = getCore()->getEntities<BoxCollider>(bces);
 
 		std::vector<std::shared_ptr<Entity>> tempEntities = getCore()->getEntities();
 
@@ -57,6 +61,10 @@ namespace engine
 
 			std::shared_ptr<BoxCollider> bc = (*it)->getComponent<BoxCollider>();
 
+			//if (!isTrigger)
+			//{
+
+			//}
 			rend::vec3 sp = bc->getCollisionResponse(np, size);
 			np = sp;
 			np = np - offset;

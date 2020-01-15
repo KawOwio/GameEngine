@@ -143,7 +143,7 @@ namespace engine
 
 	std::shared_ptr<Camera> Core::getCamera()
 	{
-		return camera;
+		return camera; 
 	}
 
 	std::shared_ptr<Keyboard> Core::getKeyboard()
@@ -159,5 +159,10 @@ namespace engine
 	std::vector<std::shared_ptr<Entity>> Core::getEntities()
 	{
 		return entities;
+	}
+
+	std::shared_ptr<GUI> Core::getGui()
+	{
+		return gui;
 	}
 }
