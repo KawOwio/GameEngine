@@ -14,20 +14,42 @@ namespace engine
 	class Material;
 	class Texture;
 
+	///	###	Example of usage:
+	///	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.cpp
+	///	std::shared_ptr<Renderer> entityRenderer = entityName->addComponent<Renderer>();
+	///	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	class Renderer : public Component
 	{
 	public:
-		//~Renderer();
 		void onInit();
 		void onDisplay();
 
+		///	A function to set a material of a model;
+		/// @param _material is a shared pointer to material, created when we load a material.
+		///	###	Example of usage:
+		///	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.cpp
+		///	entityRenderer->setMaterial(materialName);
+		///	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		/// @see Resources::load()
 		void setMaterial(std::shared_ptr<Material> _material);
-		void setMesh(std::shared_ptr<Mesh> _mesh);
-		void setTexture(std::shared_ptr<Texture> _texture);
 
-		std::shared_ptr<Material> getMaterial();
-		std::shared_ptr<Mesh> getMesh();
-		std::shared_ptr<Texture> getTexture();
+		///	A function to set a mesh of a model;
+		/// @param _mesh is a shared pointer to mesh, created when we load a mesh.
+		///	###	Example of usage:
+		///	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.cpp
+		///	entityRenderer->setMesh(meshName);
+		///	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		/// @see Resources::load()
+		void setMesh(std::shared_ptr<Mesh> _mesh);
+
+		///	A function to set a texture of a model;
+		/// @param _texture is a shared pointer to a texture, created when we load a texture.
+		///	###	Example of usage:
+		///	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.cpp
+		///	entityRenderer->setTexture(textureName);
+		///	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		/// @see Resources::load()
+		void setTexture(std::shared_ptr<Texture> _texture);
 
 	private:
 		SDL_Window *window;

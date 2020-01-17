@@ -19,6 +19,8 @@ namespace engine
 		std::shared_ptr<rend::Shader> myShader;
 
 	public:
+		/// A function to load a shader
+		/// @see Resources::load()
 		void load(std::string _path);
 	};
 }

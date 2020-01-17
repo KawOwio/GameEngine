@@ -76,14 +76,4 @@ namespace engine
 	{
 		newMousePos = _motion;
 	}
-
-	float Keyboard::getYaw()
-	{
-		return yaw;
-	}
-
-	float Keyboard::getPitch()
-	{
-		return pitch;
-	}
 }

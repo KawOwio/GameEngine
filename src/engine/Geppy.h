@@ -3,6 +3,8 @@
 #ifndef _GEPPY_GEPPY_H_
 #define _GEPPY_GEPPY_H_
 
+#include <memory>
+
 #include "Core.h"
 #include "Entity.h"
 #include "Component.h"
@@ -16,6 +18,5 @@
 #include "Keyboard.h"
 #include "Texture.h"
 #include "BoxCollider.h"
-#include "Gui.h"
 
 #endif // !_GEPPY_GEPPY_H_

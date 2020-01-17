@@ -13,6 +13,8 @@ namespace engine
 		float lastTime = SDL_GetTicks();
 
 	public:
+		/// A function that returns delta time.
+		/// @returns float deltaTime;
 		float getDeltaTime();
 	};
 }

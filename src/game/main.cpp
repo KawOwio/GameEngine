@@ -1,5 +1,4 @@
 #include <engine/geppy.h>
-#include <memory>
 
 using namespace engine;
 
@@ -14,7 +13,7 @@ struct Controls : public Component
 		{
 			camera->getTransform()->translate(rend::vec4(0.0f, 0.0f, -0.1f, 0.0f));
 			rend::vec3 tempPos = camera->getTransform()->getPosition();
-			//tempPos.x += 0.25f;
+			tempPos.y += -0.5f;
 			tempPos.z += -1.0f;
 			sword->getComponent<Transform>()->setPosition(tempPos);
 		}
@@ -22,7 +21,7 @@ struct Controls : public Component
 		{
 			camera->getTransform()->translate(rend::vec4(-0.1f, 0.0f, 0.0f, 0.0f));
 			rend::vec3 tempPos = camera->getTransform()->getPosition();
-			//tempPos.x += 0.25f;
+			tempPos.y += -0.5f;
 			tempPos.z += -1.0f;
 			sword->getComponent<Transform>()->setPosition(tempPos);
 		}
@@ -30,7 +29,7 @@ struct Controls : public Component
 		{
 			camera->getTransform()->translate(rend::vec4(0.0f, 0.0f, 0.1f, 0.0f));
 			rend::vec3 tempPos = camera->getTransform()->getPosition();
-			//tempPos.x += 0.25f;
+			tempPos.y += -0.5f;
 			tempPos.z += -1.0f;
 			sword->getComponent<Transform>()->setPosition(tempPos);
 		}
@@ -38,7 +37,7 @@ struct Controls : public Component
 		{
 			camera->getTransform()->translate(rend::vec4(0.1f, 0.0f, 0.0f, 0.0f));
 			rend::vec3 tempPos = camera->getTransform()->getPosition();
-			//tempPos.x += 0.25f;
+			tempPos.y += -0.5f;
 			tempPos.z += -1.0f;
 			sword->getComponent<Transform>()->setPosition(tempPos);
 		}
@@ -46,8 +45,6 @@ struct Controls : public Component
 		{
 			rend::vec2 rotation = getKeyboard()->rotateCamera();
 			camera->getTransform()->rotate(rend::vec4(0.0f, rotation.x, 0.0f, 1.0f));
-
-			std::cout << "Rotation x: " << camera->getTransform()->getRotation().y << "\n";
 
 			rend::vec3 tempRot = camera->getTransform()->getRotation();
 			sword->getComponent<Transform>()->setRotation(rend::vec3(0.0f, tempRot.y, 0.0f));
@@ -57,6 +54,7 @@ struct Controls : public Component
 			
 			//mouse click
 		}
+	
 	}
 };
 
@@ -68,7 +66,7 @@ int main()
 	std::shared_ptr<Entity> cameraEntity = core->addEntity();
 	std::shared_ptr<Camera> camera = cameraEntity->addComponent<Camera>();
 	//std::shared_ptr<Camera> camera = sword->addComponent<Camera>();
-	core->setCam(camera);
+	core->setCamera(camera);
 
 	//Create objects
 	std::shared_ptr<Entity> cat = core->addEntity();
@@ -143,9 +141,12 @@ int main()
 	cat->getComponent<Transform>()->setPosition(rend::vec3(0.0f, 1.2f, -5.0f));
 	cat->getComponent<Transform>()->setScale(rend::vec3(0.5f, 0.5f, 0.5f));
 
+	rend::vec3 tempPos = camera->getTransform()->getPosition();
+	tempPos.y = 1.5f;
+	tempPos.z += -1.0f;
 	sword->getComponent<Transform>()->setScale(rend::vec3(0.05f, 0.05f, 0.05f));
 	sword->getComponent<Transform>()->setRotation(rend::vec3(1.0f, 0.0f, 0.0f));
-	sword->getComponent<Transform>()->setPosition(rend::vec3(0.0f, 2.0f, 0.0f));
+	sword->getComponent<Transform>()->setPosition(tempPos);
 
 	enemy->getComponent<Transform>()->setScale(rend::vec3(15.0f, 15.0f, 15.0f));
 	enemyCollider->setSize(rend::vec3(1.2f, 1.2f, 1.2f));

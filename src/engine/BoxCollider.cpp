@@ -8,7 +8,6 @@ namespace engine
 	void BoxCollider::onInit()
 	{
 		size = rend::vec3(1.0f, 1.0f, 1.0f);
-		isTrigger = false;
 		lastPosition = getTransform()->getPosition();
 	}
 
@@ -16,11 +15,6 @@ namespace engine
 	{
 		collideBox();
 		collideStaticMesh();
-	}
-
-	void BoxCollider::setTrigger(bool _trigger)
-	{
-		isTrigger = _trigger;
 	}
 
 	void BoxCollider::setSize(rend::vec3 _size)

@@ -26,6 +26,7 @@ namespace engine
 		//void getColliding(rend::vec3 _position, rend::vec3 _size, std::vector<Face>& collisions);
 	};
 
+	///WIP, not finished
 	class StaticModelCollider : public Component
 	{
 		std::vector<std::shared_ptr<ColliderColumn>> colColumns;

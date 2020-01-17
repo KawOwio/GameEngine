@@ -46,19 +46,4 @@ namespace engine
 	{
 		texture = _texture;
 	}
-
-	std::shared_ptr<Mesh> Renderer::getMesh()
-	{
-		return mesh;
-	}
-
-	std::shared_ptr<Material> Renderer::getMaterial()
-	{
-		return material;
-	}
-
-	std::shared_ptr<Texture> Renderer::getTexture()
-	{
-		return texture;
-	}
 }

@@ -41,7 +41,7 @@ namespace engine
 		rtn->resources = std::make_shared<Resources>();
 		rtn->resources->core = rtn;
 		rtn->keyboard = std::make_shared<Keyboard>();
-		rtn->environemnt = std::make_shared<Environment>();
+		rtn->environment = std::make_shared<Environment>();
 
 		return rtn;
 	}
@@ -105,7 +105,7 @@ namespace engine
 
 			//sleep off the remaining time 
 			float idealTime = 1.0f / 60.0f;
-			float deltaTime = environemnt->getDeltaTime();
+			float deltaTime = environment->getDeltaTime();
 			if (idealTime > deltaTime)
 			{
 				SDL_Delay((idealTime - deltaTime) * 1000.0f);
@@ -121,7 +121,7 @@ namespace engine
 		SDL_DestroyWindow(window);
 	}
 
-	void Core::setCam(std::shared_ptr<Camera> _cam)
+	void Core::setCamera(std::shared_ptr<Camera> _cam)
 	{
 		camera = _cam;
 	}
@@ -153,16 +153,11 @@ namespace engine
 
 	std::shared_ptr<Environment> Core::getEnvironment()
 	{
-		return environemnt;
+		return environment;
 	}
 
 	std::vector<std::shared_ptr<Entity>> Core::getEntities()
 	{
 		return entities;
-	}
-
-	std::shared_ptr<GUI> Core::getGui()
-	{
-		return gui;
 	}
 }

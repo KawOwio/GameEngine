@@ -19,6 +19,8 @@ namespace engine
 		std::shared_ptr<rend::Mesh> myMesh;
 
 	public:
+		/// A function to load a model
+		/// @see Resources::load()
 		void load(std::string _path);
 	};
 }

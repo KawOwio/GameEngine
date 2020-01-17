@@ -9,17 +9,11 @@ namespace engine
 		scale = rend::vec3(1.0f, 1.0f, 1.0f);
 	}
 
-	void Transform::onTick()
-	{
-		
-	}
-
 	void Transform::translate(rend::vec4 _amount)
 	{
 		rend::mat4 model = getModel();
 		rend::vec3 moveAmount = model * _amount;
 		position += moveAmount;
-		//position += _amount;
 	}
 
 	void Transform::rotate(rend::vec3 _amount)

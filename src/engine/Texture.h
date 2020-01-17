@@ -19,6 +19,8 @@ namespace engine
 		std::shared_ptr<rend::Texture> myTexture;
 
 	public:
+		/// A function to load a texture
+		/// @see Resources::load()
 		void load(std::string _path);
 	};
 }
